@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver  # DB driver
+    url: jdbc:h2:tcp://localhost/~/appcenterstudy  # DB location
+    username: sa  # DB account
+    password:  # DB password
+
+  jpa:
+    hibernate:
+      ddl-auto: create  # DDL setting. create : auto drop when run
+    properties:
+      hibernate:
+        show-sql: true  # show SQL on console
+        format_sql: true  # SQL formatting
