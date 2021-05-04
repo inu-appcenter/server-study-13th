@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    drvier-class-name: org.h2.Driver # 데이터베이스 접근할 때 사용할 드라이버
+    url: jdbc:h2:tcp://localhost/~/jpashop #데이터베이스 위치
+    username: sa # 데이터베이스 사용자 계정
+    password: # 데이터베이스 사용자 비밀번호
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create  # 실행될 때 자동드랍 - 생성
+    properties:
+      hibernate:
+        show_sql: true # SQL을 콘솔에 찍어준다.
+        format_sql: true # SQL 포맷팅
