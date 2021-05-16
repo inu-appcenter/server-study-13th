@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -33,7 +31,7 @@ public class OrderController {
     @DeleteMapping("/orders/{orderId}")
     public ResponseEntity deleteOrder(@PathVariable Long orderId) {
 
-        orderService.cancelOrder(orderId);
+        orderService.delete(orderId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
