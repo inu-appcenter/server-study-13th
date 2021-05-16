@@ -44,6 +44,7 @@ public class OrderService {
 
         Order order = orderRepository.findWithProductById(orderId)
                 .orElseThrow(() -> new OrderException("존재하지 않는 주문입니다."));
+
         order.deleteOrder(order);
     }
 }

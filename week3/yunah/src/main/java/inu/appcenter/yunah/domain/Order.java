@@ -51,7 +51,6 @@ public class Order extends BaseEntity {
     }
 
     public void deleteOrder(Order order) {
-
         this.status = OrderStatus.DELETED;
         this.product.cancelStockQuantity(order.getCount());
     }

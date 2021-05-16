@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    // 주문을 조회할 때 상품도 함께 조회
+    // 주문을 조회하면서 상품도 함께 조회
     @Query("select o from Order o join fetch o.product where o.id = :orderId")
     Optional<Order> findWithProductById(Long orderId);
 }

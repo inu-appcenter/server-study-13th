@@ -26,7 +26,7 @@ public class OrderController {
     }
 
     /*
-    주문 취소
+    주문 취소.
      */
     @DeleteMapping("/orders/{orderId}")
     public ResponseEntity deleteOrder(@PathVariable Long orderId) {
