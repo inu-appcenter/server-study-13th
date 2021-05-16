@@ -42,7 +42,7 @@ public class MemberService {
     public void deleteMember(Long memberId) {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new MemberException("존재하지 않는 회원입니다."));
-        memberRepository.delete(member);
+        member.delete();
     }
 
     public List<Member> findAll() {

@@ -30,7 +30,7 @@ public class MemberController {
     //  회원 수정(이름만)
     @PatchMapping("/members/{memberId}")
     public ResponseEntity updateMember(@PathVariable Long memberId,
-                                       @RequestBody MemberUpdateRequest memberUpdateRequest){
+                                       @RequestBody @Valid MemberUpdateRequest memberUpdateRequest){
         memberService.updateMember(memberId, memberUpdateRequest);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

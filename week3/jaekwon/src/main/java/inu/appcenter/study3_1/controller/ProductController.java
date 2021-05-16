@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class ProductController {
 
     //  상품 등록
     @PostMapping("/products")
-    public ResponseEntity saveProduct(@RequestBody ProductSaveRequest productSaveRequest){
+    public ResponseEntity saveProduct(@RequestBody @Valid ProductSaveRequest productSaveRequest){
         productService.saveProduct(productSaveRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -29,7 +30,7 @@ public class ProductController {
     //  상품 수정
     @PatchMapping("/products/{productId}")
     public ResponseEntity updateProduct(@PathVariable Long productId,
-                                        @RequestBody ProductUpdateRequest productUpdateRequest){
+                                        @RequestBody @Valid ProductUpdateRequest productUpdateRequest){
         productService.updateProduct(productId, productUpdateRequest);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

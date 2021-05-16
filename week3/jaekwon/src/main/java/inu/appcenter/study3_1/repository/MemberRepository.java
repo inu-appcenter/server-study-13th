@@ -18,7 +18,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     //  회원 리스트 조회할 때 모든 회원의 주문 목록까지 같이 조회
     //  결과가 여러개이기 때문에 Optional이 아닌 List로 선언해야 함
-    @Query("select m from Member m join fetch m.orderList")
+    @Query("select distinct m from Member m join fetch m.orderList")
     List<Member> findWithOrderListAll();
 
 
