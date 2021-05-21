@@ -40,11 +40,11 @@ public class OrderService {
     }
 
     @Transactional
-    public void cancelOrder(Long orderId) {
+    public void delete(Long orderId) {
 
-        Order order = orderRepository.findById(orderId)
+        Order order = orderRepository.findWithProductById(orderId)
                 .orElseThrow(() -> new OrderException("존재하지 않는 주문입니다."));
 
-        Order.cancelOrder(order);
+        order.deleteOrder(order);
     }
 }

@@ -50,9 +50,8 @@ public class Order extends BaseEntity {
         return order;
     }
 
-    public static void cancelOrder(Order order) {
-
-        order.status = OrderStatus.DELETED;
-        order.product.cancelStockQuantity(order.count);
+    public void deleteOrder(Order order) {
+        this.status = OrderStatus.DELETED;
+        this.product.cancelStockQuantity(order.getCount());
     }
 }
