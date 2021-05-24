@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -76,10 +75,6 @@ public class PostService {
     public Post findPostById(Long postId) {
 
         // 게시글 id가 존재하는지 확인
-        postRepository.findById(postId)
-                .orElseThrow(() -> new PostException("존재하지 않는 게시글입니다."));
-
-        // 게시글이 존재한다면
         Post post = postQueryRepository.findWithCommentById(postId);
 
         return post;
@@ -87,21 +82,16 @@ public class PostService {
 
     // 카테고리 Id로 게시글 리스트 조회
     // 삭제상태가 아닌 게시글들만!, 게시글의 댓글 수 까지 같이 조회
-    public List<PostWithCommentCountDto> findPostCommentByCategoryId(Long categoryId) {
+    public List<PostWithCommentCount> findPostCommentByCategoryId(Long categoryId) {
 
         // 카테고리 id가 존재하는지 확인
         categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new CategoryException("존재하지 않는 카테고리입니다."));
 
-        // 해당 카테고리 id에 속하는 게시글 id 찾기
-        List<Long> postId = postQueryRepository.findPostId(categoryId);
+        // 해당 카테고리의 게시글과 댓글 수 가져오기
+        List<PostWithCommentCount> postWithCommentCounts = postQueryRepository.findPostwithCommentCountsByCategoryId(categoryId);
 
-        // 해당 카테고리 id에 속하는 게시글 id로 게시글과 댓글 수 가져오기
-        List<PostWithCommentCountDto> commentCount = postId.stream()
-                                                .map(id -> postQueryRepository.findPostWithCommentCountsByPostId(id))
-                                                .collect(Collectors.toList());
-
-        return commentCount;
+        return postWithCommentCounts;
     }
 
 }
