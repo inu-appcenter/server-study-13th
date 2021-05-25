@@ -3,6 +3,8 @@ package inu.appcenter.yunah.service;
 import inu.appcenter.yunah.domain.Category;
 import inu.appcenter.yunah.domain.Member;
 import inu.appcenter.yunah.domain.Post;
+import inu.appcenter.yunah.domain.status.CategoryStatus;
+import inu.appcenter.yunah.domain.status.PostStatus;
 import inu.appcenter.yunah.exception.CategoryException;
 import inu.appcenter.yunah.exception.MemberException;
 import inu.appcenter.yunah.exception.PostException;
@@ -57,16 +59,16 @@ public class PostService {
     }
 
     public Post findPostWithCommentById(Long postId) {
-        Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new PostException("존재하지 않는 게시글입니다."));
+
         Post postById = postQueryRepository.findPostById(postId);
+
         return postById;
     }
 
     public List<PostCountDto> findPostList(Long categoryId) {
-        Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new CategoryException("존재하지 않는 카테고리입니다."));
+
         List<PostCountDto> postByCategory = postQueryRepository.findPostByCategory(categoryId);
+
         return postByCategory;
     }
 }

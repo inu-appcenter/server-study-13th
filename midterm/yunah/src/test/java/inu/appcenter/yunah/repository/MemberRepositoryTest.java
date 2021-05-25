@@ -50,8 +50,6 @@ class MemberRepositoryTest {
 
         Member memberById = memberQueryRepository.findMemberById(member.getId());
         assertThat(memberById.getPostList().size()).isEqualTo(2);
-//        MemberPostDto memberById = memberQueryRepository.findMemberById(member);
-//        Member memberById = memberQueryRepository.findMemberById(member.getId());
-//        assertThat(memberById.getPostList().size()).isEqualTo(2);
+
     }
 }

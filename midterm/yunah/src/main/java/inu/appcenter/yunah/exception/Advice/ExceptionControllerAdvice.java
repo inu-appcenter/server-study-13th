@@ -39,14 +39,9 @@ public class ExceptionControllerAdvice {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("잘못된 요청입니다.");
     }
 
-    /*
-    회원 Id 조회 시, 회원이 deleted인 경우
-    게시글 Id 조회 시, 게시글이 deleted인 경우
-    500(NullPointException) 오류 발생...
-    */
     @ExceptionHandler({NullPointerException.class})
     public ResponseEntity NullExceptionHandler(NullPointerException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("삭제된 회원이거나 작성된 게시글이 존재하지 않습니다.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("존재하지 않는 회원이거나 작성된 게시글이 존재하지 않습니다.");
     }
 }
 

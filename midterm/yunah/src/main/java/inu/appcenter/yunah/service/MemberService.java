@@ -1,6 +1,7 @@
 package inu.appcenter.yunah.service;
 
 import inu.appcenter.yunah.domain.Member;
+import inu.appcenter.yunah.domain.status.MemberStatus;
 import inu.appcenter.yunah.exception.MemberException;
 import inu.appcenter.yunah.model.member.MemberSaveRequest;
 import inu.appcenter.yunah.model.member.MemberUpdateRequest;
@@ -49,9 +50,6 @@ public class MemberService {
     }
 
     public Member findMemberWithPostById(Long memberId) {
-
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new MemberException("존재하지 않는 회원입니다."));
 
         Member memberById = memberQueryRepository.findMemberById(memberId);
 
