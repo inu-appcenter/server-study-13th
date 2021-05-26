@@ -33,7 +33,7 @@ public class PostQueryRepository {
     // 삭제 상태가 아닌 게시글, 댓글 수
     public List<PostCountDto> findPostByCategory(Long categoryId) {
 
-        List<PostCountDto> postCountDtoList = queryFactory.select(new QPostCountDto(post, comment.count()))
+        List<PostCountDto> postCountDtoList = queryFactory.select(new QPostCountDto(post, comment.count())).distinct()
                 .from(post)
                 .leftJoin(post.commentList, comment)
                 .where(post.status.eq(PostStatus.ACTIVE)

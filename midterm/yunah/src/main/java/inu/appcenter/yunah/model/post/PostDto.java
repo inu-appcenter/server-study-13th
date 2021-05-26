@@ -7,7 +7,9 @@ import lombok.Data;
 @Data
 public class PostDto {
 
-    private Long id;
+    private Long postId;
+
+    private Long categoryId;
 
     private String title;
 
@@ -17,7 +19,8 @@ public class PostDto {
 
     public PostDto(Post post) {
 
-        this.id = post.getId();
+        this.postId = post.getId();
+        this.categoryId = post.getCategory().getId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.status = post.getStatus();
