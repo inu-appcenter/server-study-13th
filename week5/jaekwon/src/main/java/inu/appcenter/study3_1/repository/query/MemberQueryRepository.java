@@ -9,6 +9,7 @@ import java.util.List;
 
 import static inu.appcenter.study3_1.domain.QMember.*;
 import static inu.appcenter.study3_1.domain.QOrder.*;
+import static inu.appcenter.study3_1.domain.QProduct.*;
 
 @Repository
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class MemberQueryRepository {
         List<Member> findAllMember = queryFactory.
                 select(member).distinct()
                 .from(member)
-                .leftJoin(member.orderList, order)
+                .leftJoin(member.orderList, order).fetchJoin()
                 .where(member.status.eq(MemberStatus.ACTIVE))
                 .fetch();
         return findAllMember;

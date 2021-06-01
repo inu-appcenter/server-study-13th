@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/exception/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/members", "/members/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/members").hasRole("ADMIN")
+                //.antMatchers(HttpMethod.GET, "/members").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/products/{productId}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/products/{productId}").hasRole("ADMIN")
