@@ -28,7 +28,7 @@ public class MemberQueryRepository {
                 .select(member).distinct()
                 .from(member)
                 .leftJoin(member.orderList, order)
-                .fetchJoin()
+                .leftJoin(order.product, product)
                 .where(member.status.eq(MemberStatus.ACTIVE))
                 .fetch();
 
@@ -41,7 +41,7 @@ public class MemberQueryRepository {
                 .select(member).distinct()
                 .from(member)
                 .leftJoin(member.orderList, order)
-                .fetchJoin()
+                .leftJoin(order.product, product)
                 .where(member.id.eq(memberId)
                     .and(member.status.eq(MemberStatus.ACTIVE)))
                 .fetchOne();
