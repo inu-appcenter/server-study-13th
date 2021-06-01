@@ -27,11 +27,11 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
 
     // 관리자 권한 추가
-//    @PostConstruct
-//    public void saveAdminMember() {
-//        Member adminMember = Member.AdminMember("admin", passwordEncoder.encode("0000"), "관리자");
-//        memberRepository.save(adminMember);
-//    }
+    @PostConstruct
+    public void saveAdminMember() {
+        Member adminMember = Member.AdminMember("admin", passwordEncoder.encode("0000"), "관리자");
+        memberRepository.save(adminMember);
+    }
 
     // 회원 등록
     @Transactional
