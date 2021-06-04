@@ -78,8 +78,7 @@ public class MemberService {
     }
 
     public Member findMember(Long memberId) {
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new MemberException("존재하지 않는 회원입니다."));
+        Member member = memberQueryRepository.findMemberById(memberId);
         return member;
     }
 }
