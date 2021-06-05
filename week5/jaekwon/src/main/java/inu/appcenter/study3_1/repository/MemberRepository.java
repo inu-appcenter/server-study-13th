@@ -16,7 +16,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findWithRolesById(@Param("memberId") Long memberId);
 
     //  회원 조회할 때 회원 주문목록까지 같이 조회
-    @Query("select distinct m from Member m left join fetch m.orderList where m.id =:memberId")
+    @Query("select distinct m from Member m left join fetch m.orderList o left join fetch o.product where m.id =:memberId")
     Optional<Member> findWithOrderListById(@Param("memberId") Long memberId);
 
     //  회원 리스트 조회할 때 모든 회원의 주문 목록까지 같이 조회

@@ -22,6 +22,7 @@ public class MemberQueryRepository {
                 select(member).distinct()
                 .from(member)
                 .leftJoin(member.orderList, order).fetchJoin()
+                .leftJoin(order.product, product).fetchJoin()
                 .where(member.status.eq(MemberStatus.ACTIVE))
                 .fetch();
         return findAllMember;
